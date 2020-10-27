@@ -17,6 +17,9 @@ class Crawler(scrapy.Spider):
                 "publisher": title.css("span.sitestr::text").get()
             }         
 
+        next_page = response.css("a.morelink::attr(href)").get()
         
-                    
+        if next_page is not None:
+            for a in response.css("a.morelink::attr(href)"):
+                yield response.follow(a, callback=self.parse)
             
