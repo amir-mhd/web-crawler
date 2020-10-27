@@ -1,5 +1,6 @@
 import scrapy
-from scrapy.crawler import CrawlerProcess
+from web_crawler_bot.items import Hackernews_items
+
 
 class Hackernews_crawler(scrapy.Spider):
     # assign a name to later call it in crawl command
@@ -13,13 +14,14 @@ class Hackernews_crawler(scrapy.Spider):
 
     # defining a method to parse the html and css in pages
     def parse(self, response):
-        titles = response.css("td.title a")
-        for title in titles:
-            yield{
-                "title": title.css("a::text").get(),
-                "publisher": title.css("span.sitestr::text").get()
-            }         
-
+        article_item = Hackernews_items() 
+        articles_info = response.css("td.title a")
+        for article in articles_info:
+            article_item["title"] = article.css("a::text").get()
+            article_item["publisher"] = article.css("span.sitestr::text").get()
+    
+            yield article_item
+        
         # get the next page link
         next_page = response.css("a.morelink::attr(href)").get()
         # check if there was another page crawl that too
@@ -28,7 +30,3 @@ class Hackernews_crawler(scrapy.Spider):
                 # follow just is a shortcut to go to next relative URLs
                 yield response.follow(a, callback=self.parse)
             
-            
-process = CrawlerProcess()
-process.crawl(Hackernews_crawler)
-process.start()
