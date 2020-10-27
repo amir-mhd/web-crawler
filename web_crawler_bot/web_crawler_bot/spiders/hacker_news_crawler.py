@@ -1,5 +1,5 @@
 import scrapy
-from web_crawler_bot.items import Hackernews_items
+from ..items import Hackernews_items
 
 
 class Hackernews_crawler(scrapy.Spider):
@@ -9,8 +9,9 @@ class Hackernews_crawler(scrapy.Spider):
     # determine which page should be the starting page
     start_urls = ["https://news.ycombinator.com/"]
 
+    # settings for string downloaded data
     custom_settings = {
-        "FEED_FORMAT": "csv", "FEED_URI": "hackernews_data.csv",}
+        "FEED_FORMAT": "csv", "FEED_URI": "hackernews_data.csv"}
 
     # defining a method to parse the html and css in pages
     def parse(self, response):
@@ -29,4 +30,8 @@ class Hackernews_crawler(scrapy.Spider):
             for a in response.css("a.morelink"):
                 # follow just is a shortcut to go to next relative URLs
                 yield response.follow(a, callback=self.parse)
-            
+
+
+# process = CrawlerProcess()
+# process.crawl(Hackernews_crawler)
+# process.start()
