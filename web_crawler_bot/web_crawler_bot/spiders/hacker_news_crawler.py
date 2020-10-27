@@ -31,7 +31,3 @@ class Hackernews_crawler(scrapy.Spider):
                 # follow just is a shortcut to go to next relative URLs
                 yield response.follow(a, callback=self.parse)
 
-
-# process = CrawlerProcess()
-# process.crawl(Hackernews_crawler)
-# process.start()
