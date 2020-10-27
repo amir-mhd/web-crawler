@@ -1,6 +1,6 @@
 import scrapy
 
-class Crawler(scrapy.Spider):
+class Hackernews_crawler(scrapy.Spider):
     # assign a name to later call it in crawl command
     name = "hackernews"
 
