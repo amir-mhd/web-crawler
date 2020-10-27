@@ -20,7 +20,7 @@ class Crawler(scrapy.Spider):
         next_page = response.css("a.morelink::attr(href)").get()
         # check if there was another page crawl that too
         if next_page is not None:
-            for a in response.css("a.morelink::attr(href)"):
+            for a in response.css("a.morelink"):
                 # follow just is a shortcut to go to next relative URLs
                 yield response.follow(a, callback=self.parse)
             
