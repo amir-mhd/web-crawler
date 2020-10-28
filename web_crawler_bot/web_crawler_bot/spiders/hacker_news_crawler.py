@@ -18,8 +18,9 @@ class Hackernews_crawler(scrapy.Spider):
         article_item = Hackernews_items() 
         articles_info = response.css("td.title")
         for article in articles_info:
-            article_item["title"] = article.css("a::text").get()
-            article_item["publisher"] = article.css("span.sitestr::text").get()
+            article_item["title"] = article.css("a.storylink::text").get()
+            article_item["publisher"] = article.css("span > a > span::text").get()
+            article_item["article_link"] = article.css("a::attr(href)").get()
             yield article_item
     
         
@@ -30,3 +31,4 @@ class Hackernews_crawler(scrapy.Spider):
             for a in response.css("a.morelink"):
                 # follow is just a shortcut of joinurl and it goes to the next relative URLs
                 yield response.follow(a, callback=self.parse)
+
