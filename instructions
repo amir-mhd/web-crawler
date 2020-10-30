@@ -1,0 +1,16 @@
+### making a venv to use ###
+
+-- installing vevn in ubuntu ==> apt-get install python3-venv
+-- making a venv in a dir ==> python3 -m venv crawler_venv
+-- activating the vevn ==> source crawler_venv/bin/activate
+-- installing essential tools in venv for python ==> pip install -U setuptools pip 
+--deactivating the venv ==> deactivate
+
+### installing scrapy in venv ###
+
+-- pip3 install scrapy
+
+### 
+
+
+
