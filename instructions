@@ -1,3 +1,6 @@
+my OS = ubuntu 20.04 LTS
+project was developing in the virtual environment
+
 ### making a venv to use ###
 
 -- installing vevn in ubuntu ==> apt-get install python3-venv
