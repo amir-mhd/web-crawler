@@ -13,7 +13,8 @@ project was developing in the virtual environment
 
 -- pip3 install scrapy
 
-### 
+### installing Ipython 
 
+-- pip install ipython
 
 
