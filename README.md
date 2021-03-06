@@ -1,12 +1,11 @@
-This is a crawler written in "Scrapy" framework, Scrapy is opensource project, It's written in python and is one of the fastest webscraping/crawling framework out there.
+# Project's Aim
+This project was built to serve my personal need for learning how a crawler work? and how can I programm a crawler
+For my own interests in tech news and cryptocurrency I chose to scrape [hackernews](https://news.ycombinator.com/) and [coinmarketcap](https://coinmarketcap.com/) 
 
-You can use Scrapy to achieve different purposes like gathering data from acrros the web for data science project, downloading data for your personal work or ... .
+# Technology
+My crawler is written in **Scrapy**, Scrapy is an opensource *framework* and is written in **python**. It's one of the fastest webscraping/crawling frameworks out there (as far as I know!).
+For more information about Scrapy project you can visit it's website [Here](https://scrapy.org/) 
 
-For more information about Scrapy project you can visit it's website at:
---  https://scrapy.org/  -- 
-
-This specific webcralwer is synced for crawler the hacker news website, hackernews website is a place which different people around the world gather around and share thier favorite articles with each other.
-
-This crawler will get the title, publisher, and the article website link and save them in a csv file name "hackernews_data.csv" by default, you can change this default behavior by making changes in "custom_settings", for more information look at this link in Scrapy official documentation https://docs.scrapy.org/en/latest/topics/spiders.html?highlight=custom_setting#scrapy.spiders.Spider.custom_settings
-
-Crawler is written to find the next page link, when it reaches the next page it will crawl the page and find the same data in the new page and store it in the same csv file 
+# How It Works
+My crawler will gather the title, publisher, and the article website link and save them in a csv file name "hackernews_data.csv" by default, you can change this default behavior by making changes in "custom_settings", for more information look at this [Doc](https://docs.scrapy.org/en/latest/topics/spiders.html?highlight=custom_setting#scrapy.spiders.Spider.custom_settings) in Scrapy official documentation 
+Crawler is programmed to find the next page link in hackernews website, when it reaches the next page, it will crawl it and gather the same data in the new page and append it to the csv file 
